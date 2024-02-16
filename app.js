@@ -8,6 +8,7 @@ const hpp=require('hpp');
 const cors=require('cors');
 const mongoose=require('mongoose');
 const dotenv=require('dotenv');
+const dbConnection = require('./db');
 
 
 
@@ -27,15 +28,8 @@ const userRouter = require('./src/route/user-routes');
 const limiter=rateLimit({windowMs:15*60*1000,max:300});
 app.use(limiter);
 
-
-let url = `mongodb+srv://akash:akash123@cluster0.epuw6z9.mongodb.net/MERNECOM?retryWrites=true&w=majority`;
-// let options = {
-//   user: "akash",
-//   pass: "akash123",
-// }
-mongoose.connect(url).then(()=>{
-  console.log("DB Connected");
-}).catch((e)=>{
+// database connection
+dbConnection().catch((e)=>{
   console.log(e);
 })
 
