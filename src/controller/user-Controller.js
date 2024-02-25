@@ -2,7 +2,7 @@ const db = require("../../db");
 const UserModel = require("../../src/models/users-model");
 const CrateUser = async(req,res) =>{
     let userData = req.body;
-    console.log("userData",userData);
+    // console.log("userData",userData);
 try{
     // await db.collection("users").insertOne(userData);
     const resp = await UserModel.create(userData);

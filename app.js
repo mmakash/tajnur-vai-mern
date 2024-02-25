@@ -22,6 +22,8 @@ app.use(express.urlencoded({limit:'50mb'}));
 app.use(bodyParser.json());
 
 const userRouter = require('./src/route/user-routes');
+const taskRouter = require('./src/route/task-routes');
+const authRouter = require('./src/route/auth-routes');
 
 
 // Rate Limiting
@@ -35,8 +37,8 @@ dbConnection().catch((e)=>{
 
 
 app.use("/api",userRouter);
-
-
+app.use("/api",taskRouter);
+app.use("/api",authRouter);
 
 
 module.exports=app;
